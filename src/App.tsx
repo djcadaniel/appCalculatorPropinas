@@ -21,7 +21,7 @@ function App() {
       <main className="mx-auto w-full bg-[#48392D] font-montserrat">
         <section className="contain p-10">
           <h2 className="text-4xl font-black text-white">Menú</h2>
-          <div className="space-y-3 mt-10 grid grid-cols-4 gap-11">
+          <div className="space-y-3 mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-11">
             {menuItems.map(item => (
                 <MenuItem 
                   key={item.id}
