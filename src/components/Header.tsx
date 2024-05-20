@@ -1,15 +1,16 @@
-import { RiShoppingCartFill } from "react-icons/ri";
+
 import logo from '/img/logo.png'
 import { menuItems } from "../data/db";
+import { Carrito } from './Carrito';
+
 
 export default function Header() {
+
   return (
     <header className="contain h-full w-full border border-1 border-solid">
       <nav className="px-10 sm:px-5 w-full h-auto flex justify-between items-center py-10">
         <img src={logo} alt="logo del restaurant" className="h-36"/>
-        <button className="w-[40px] fixed right-0 sm:right-20 3xl:right-72">
-          <RiShoppingCartFill className="w-[30px] sm:w-[40px] h-auto text-amber-300 transition-text duration-300 ease-in-out hover:text-amber-950" />
-        </button>
+        <Carrito />
       </nav>
       <div className="px-10 w-full h-[calc(100vh-225px)] flex flex-col sm:flex-row justify-center items-center font-montserrat">
         <div className="order-2 w-full sm:order-1 sm:w-1/2 h-full md:pr-4 lg:pr-28 flex flex-col justify-center items-start space-y-4 text-white ">

@@ -20,6 +20,10 @@
   background-image: url("/img/madera.jpg");
 }
 
+.carritoScroll {
+  top: 0;
+}
+
 /*****ANIMACIONES*******/
 .animate-float {
   animation: float 3s ease-in-out infinite;
