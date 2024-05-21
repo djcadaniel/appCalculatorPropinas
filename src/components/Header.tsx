@@ -3,14 +3,19 @@ import logo from '/img/logo.png'
 import { menuItems } from "../data/db";
 import { Carrito } from './Carrito';
 
+type HeaderProps = {
+  showDetails : () => void
+}
 
-export default function Header() {
+export default function Header({showDetails} : HeaderProps) {
 
   return (
     <header className="contain h-full w-full border border-1 border-solid">
       <nav className="px-10 sm:px-5 w-full h-auto flex justify-between items-center py-10">
         <img src={logo} alt="logo del restaurant" className="h-36"/>
-        <Carrito />
+        <Carrito
+          showDetails = {showDetails}
+        />
       </nav>
       <div className="px-10 w-full h-[calc(100vh-225px)] flex flex-col sm:flex-row justify-center items-center font-montserrat">
         <div className="order-2 w-full sm:order-1 sm:w-1/2 h-full md:pr-4 lg:pr-28 flex flex-col justify-center items-start space-y-4 text-white ">

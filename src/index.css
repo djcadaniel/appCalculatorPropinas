@@ -21,7 +21,12 @@
 }
 
 .carritoScroll {
-  top: 0;
+  top: 1rem;
+}
+
+.showCar {
+  left: 0;
+  transition: left 400ms ease-in-out;
 }
 
 /*****BODY*****/

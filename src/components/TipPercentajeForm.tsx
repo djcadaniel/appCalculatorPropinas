@@ -26,7 +26,7 @@ type TipPercentajeFormProps = {
 export default function TipPercentajeForm({setTip, tip} : TipPercentajeFormProps) {
   return (
     <div>
-      <h3 className="font-black  text-2xl">Propina: </h3>
+      <h3 className="font-black text-[#FFA500] text-2xl">Propina: </h3>
       <form action="">
         {tipOptions.map(tipOption => (
           <div key={tipOption.id} className="flex gap-2">

@@ -17,7 +17,7 @@ export default function OrderTotals({order, tip, placeOrder}: OrderTotalsProps) 
   return (
     <>
       <div className='space-y-3'>
-        <h2 className='font-black text-2xl'>Totales y Propina:</h2>
+        <h2 className='font-black text-2xl text-[#FFA500]'>Totales y Propina:</h2>
         <p>Subtotal a pagar: <span className='font-bold'>{ formatCurrency(subTotalAmount) }</span></p>
         <p>Propina: <span className='font-bold'>{formatCurrency(tipAmount)}</span></p>
         <p>Total a pagar: <span className='font-bold'>{formatCurrency(totalAmount)}</span></p>

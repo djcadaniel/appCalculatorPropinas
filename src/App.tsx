@@ -8,15 +8,40 @@ import useOrder from "./hooks/useOrder"
 
 function App() {
 
-  const { order,tip, setTip, addItem, removeItem, placeOrder } = useOrder()
+  const { order,tip, setTip, addItem, removeItem, placeOrder, showDetails, showCar, setShowCar } = useOrder()
 
   return (
     <>
       <div className="h-[100vh] w-full bg-cover bg-center bg-no-repeat bg-fixed bg-[url('/img/madera.jpg')]">
         <div className="bg-gradient-to-r from-black/80 via-black/50 to-yellow-800/60">
-          <Header />
+          <Header 
+            showDetails = {showDetails}
+          />
         </div>
         {/* <img src={fondo} alt="" className="absolute h-full w-full object-cover bg-gradient-to-r from-yellow-950 via-yellow-900 to-yellow-600 relativemix-blend-hue" /> */}
+      </div>
+      <div 
+        className={`${ showCar ? 'showCar' : '  '} z-50 fixed top-0 -left-full h-full w-[90%] lg:w-[50%] transition-all duration-500 ease-in-out p-5 space-y-10 bg-[#875B36]`}
+      >
+        {order.length > 0 ? (
+          <>
+            <OrderContens 
+              order = {order}
+              removeItem = {removeItem}
+            />
+            <TipPercentajeForm 
+              setTip = {setTip}
+              tip= {tip}
+            />
+            <OrderTotals 
+              order = {order}
+              tip = {tip}
+              placeOrder = {placeOrder}
+            />
+          </>
+        ) : (
+          <p className="text-center">La orden esta vacía</p>
+        )}
       </div>
       <main className="mx-auto w-full bg-[#48392D] font-montserrat">
         <section className="w-full h-auto contain p-10">
@@ -31,27 +56,6 @@ function App() {
             ))}
           </div>
         </section>
-        <div className="border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
-          {order.length > 0 ? (
-            <>
-              <OrderContens 
-                order = {order}
-                removeItem = {removeItem}
-              />
-              <TipPercentajeForm 
-                setTip = {setTip}
-                tip= {tip}
-              />
-              <OrderTotals 
-                order = {order}
-                tip = {tip}
-                placeOrder = {placeOrder}
-              />
-            </>
-          ) : (
-            <p className="text-center">La orden esta vacía</p>
-          )}
-        </div>
       </main>
     </>
   )
