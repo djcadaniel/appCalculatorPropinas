@@ -19,9 +19,9 @@ function App() {
         {/* <img src={fondo} alt="" className="absolute h-full w-full object-cover bg-gradient-to-r from-yellow-950 via-yellow-900 to-yellow-600 relativemix-blend-hue" /> */}
       </div>
       <main className="mx-auto w-full bg-[#48392D] font-montserrat">
-        <section className="contain p-10">
+        <section className="w-full h-auto contain p-10">
           <h2 className="text-4xl font-black text-white">Menú</h2>
-          <div className="space-y-3 mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-11">
+          <div className="w-full h-full space-y-3 mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-11">
             {menuItems.map(item => (
                 <MenuItem 
                   key={item.id}

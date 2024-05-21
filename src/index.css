@@ -24,6 +24,11 @@
   top: 0;
 }
 
+/*****BODY*****/
+.dishes_container:hover .dishes_ico {
+  color: rgb(54, 29, 29);
+}
+
 /*****ANIMACIONES*******/
 .animate-float {
   animation: float 3s ease-in-out infinite;
