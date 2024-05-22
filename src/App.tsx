@@ -8,7 +8,7 @@ import useOrder from "./hooks/useOrder"
 
 function App() {
 
-  const { order,tip, setTip, addItem, removeItem, placeOrder, showDetails, showCar, setShowCar } = useOrder()
+  const { order,tip, setTip, addItem, removeItem, placeOrder, showDetails, showCar } = useOrder()
 
   return (
     <>
