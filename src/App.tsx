@@ -46,7 +46,7 @@ function App() {
       <main className="mx-auto w-full bg-[#48392D] font-montserrat">
         <section className="w-full h-auto contain p-10">
           <h2 className="text-4xl font-black text-white">Menú</h2>
-          <div className="w-full h-full mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-11 px-20 py-5">
+          <div className="w-full h-full mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-11 px-5 sm:px-10 md:px-20 py-5">
             {menuItems.map(item => (
                 <MenuItem 
                   key={item.id}
