@@ -10,7 +10,7 @@ type HeaderProps = {
 export default function Header({showDetails} : HeaderProps) {
 
   return (
-    <header className="contain h-full w-full border border-1 border-solid">
+    <header className="contain h-full w-full">
       <nav className="px-10 sm:px-5 w-full h-auto flex justify-between items-center py-10">
         <img src={logo} alt="logo del restaurant" className="h-36"/>
         <Carrito
