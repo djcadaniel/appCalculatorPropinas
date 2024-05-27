@@ -33,6 +33,11 @@
 .dishes_container:hover .dishes_ico {
   color: rgb(54, 29, 29);
 }
+.dishes_container:hover .dish_containerimg img {
+  transform: translateY(10px);
+  transform: scale(2rem);
+  transition: all 0.5s ease-in-out;
+}
 
 /*****ANIMACIONES*******/
 .animate-float {

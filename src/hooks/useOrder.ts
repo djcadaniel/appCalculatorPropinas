@@ -1,14 +1,36 @@
-import { useState } from "react";
-import { MenuItem, OrderItem } from "../types";
+import { useEffect, useState } from "react";
+import type { MenuItem, OrderItem } from "../types";
 
 export default function useOrder() {
-  const [order, setOrder] = useState<OrderItem[]>([]);
+  const initialMenu = (): OrderItem[] => {
+    const localStorageMenu = localStorage.getItem("menu");
+    return localStorageMenu ? JSON.parse(localStorageMenu) : [];
+  };
+
+  const [order, setOrder] = useState<OrderItem[]>(initialMenu);
   const [tip, setTip] = useState(0);
   const [showCar, setShowCar] = useState(false);
+  const [messageCar, setMessageCar] = useState(false);
+
+  const MAX_ITEMS = 5;
+  const MIN_ITEMS = 1;
+
+  useEffect(() => {
+    localStorage.setItem("menu", JSON.stringify(order));
+  }, [order]);
 
   const addItem = (item: MenuItem) => {
-    const itemExist = order.find((itemOrder) => itemOrder.id === item.id);
-    if (itemExist) {
+    setMessageCar(true);
+    console.log("mensaje: " + messageCar);
+    setTimeout(() => {
+      setMessageCar(false);
+    }, 1000);
+    console.log("mensaje: " + messageCar);
+
+    const itemExist = order.findIndex((itemOrder) => itemOrder.id === item.id);
+    if (itemExist >= 0) {
+      //existe en el carrito, si no hay el ID, el findindex devuelve 0
+      if (order[itemExist].quantity === MAX_ITEMS) return;
       const updatedOrder = order.map((orderItem) =>
         orderItem.id === item.id
           ? { ...orderItem, quantity: orderItem.quantity + 1 }
@@ -46,5 +68,6 @@ export default function useOrder() {
     showDetails,
     showCar,
     setShowCar,
+    messageCar,
   };
 }

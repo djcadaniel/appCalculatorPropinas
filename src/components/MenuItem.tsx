@@ -8,8 +8,8 @@ type MenuItemProps = {
 
 export default function MenuItem({item, addItem} : MenuItemProps) {
   return (
-    <div className="w-full h-full dishes_container transition transition-bg duration-500 ease-in-out bg-[#875B36] hover:bg-[#FFA500] text-white hover:text-[#451A03] rounded-tl-3xl rounded-tr-3xl rounded-bl-3xl p-6 transform hover:translate-y-2 hover:scale-105">
-      <div className="w-full flex justify-center items-center">
+    <div className="w-full h-full dishes_container transition transition-bg duration-500 ease-in-out bg-[#875B36] hover:bg-[#FFA500] text-white hover:text-[#451A03] rounded-tl-3xl rounded-tr-3xl rounded-bl-3xl p-6">
+      <div className="dish_containerimg w-full flex justify-center items-center">
         <img src={item.foto} alt="" className="max-w-[100%] min-w-[280px] h-auto p-12 sm:p-8" />
       </div>
       <div className="flex flex-row w-full h-auto">

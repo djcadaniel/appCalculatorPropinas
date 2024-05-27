@@ -2,12 +2,15 @@
 import logo from '/img/logo.png'
 import { menuItems } from "../data/db";
 import { Carrito } from './Carrito';
+import { MenuItem, OrderItem } from '../types';
 
 type HeaderProps = {
   showDetails : () => void
+  addItem: (item: MenuItem) => void
+  order: OrderItem[]
 }
 
-export default function Header({showDetails} : HeaderProps) {
+export default function Header({showDetails, addItem} : HeaderProps) {
 
   return (
     <header className="contain h-full w-full">
@@ -22,7 +25,10 @@ export default function Header({showDetails} : HeaderProps) {
           <h1 className="text-4xl text-[color:#F59E0B]">{menuItems[0].name}</h1>
           <p className="text-md  text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint quaerat culpa similique molestiae facere. Maxime saepe cumque deserunt, nesciunt esse magnam dolor sit architecto quas similique quos nostrum tempora? Quis.</p>
           <p className="text-2xl text-[color:#F59E0B]">Precio: $.{menuItems[0].price}</p>
-          <button className="px-5 py-2 rounded-lg bg-amber-500 transition-colors duration-300 ease-in-out hover:bg-amber-950 hover:text-white">
+          <button 
+            className="px-5 py-2 rounded-lg bg-amber-500 transition-colors duration-300 ease-in-out hover:bg-amber-950 hover:text-white"
+            onClick={()=>addItem(menuItems[0])}
+          >
             Añadir
           </button>
         </div>
