@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { Dispatch, FormEvent, SetStateAction, useState } from 'react'
+import { OrderItem } from '../types';
+import { formatCurrency } from '../helpers';
 
 const typeDiscount = [
   {
@@ -18,29 +20,37 @@ const typeDiscount = [
   },
 ]
 
-export default function Discount() {
+type DiscountProp = {
+  order: OrderItem[],
+  descuento : number | null,
+  setDescuento : Dispatch<SetStateAction<number | null>>
+  tip: number
+}
+
+export default function Discount({descuento, setDescuento, order, tip}: DiscountProp) {
 
   const [inputValue, setInputValue] = useState('');
-  const [descuento, setDescuento] = useState([]);
+  
 
-  const handleSubmit = (e)=>{
+  const handleSubmit = (e: FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
   }
-  const handleInputChange = (e) => {
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value)
   }
   
-  const canjear = (label)=>{
-    const vale = typeDiscount.map(item => {
-      if(item.label === label){
-        console.log('son iguales')
-        return item;
-      }
-    })
-    console.log(vale)
-    // setDescuento(vale)
-    console.log(descuento)
+  const canjear = (label: string)=>{
+
+    const element = typeDiscount.find(item => item.label === label);
+    setDescuento(element?.percent as number)
   }
+
+  const subTotal = order.reduce( (total, item) => total + (item.quantity * item.price), 0 )
+  const discountAmount = subTotal * (tip ?? 0);
+  const total = subTotal + discountAmount;
+  const dctoVale = total * (descuento ?? 0)
+  const totalDcto = total - dctoVale
   
   return (
     <div className='flex justify-start items-center gap-4'>
@@ -61,7 +71,11 @@ export default function Discount() {
           >
             Canjear
           </button>
-          <h2>Descuento:{}</h2>
+          <div className='bg-amber-300 text-yellow-950 p-2'>
+            <p>Pocentaje del vale: {(descuento ?? 0) * 100}%</p>
+            <p>Descuento del vale: {dctoVale}</p>
+            <p>Total: {formatCurrency(totalDcto)}</p>
+          </div>
         </div>
       </form>
     </div>

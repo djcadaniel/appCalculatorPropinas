@@ -1,4 +1,3 @@
-import Discount from "./components/Discount"
 import Header from "./components/Header"
 import MenuItem from "./components/MenuItem"
 import OrderContens from "./components/OrderContens"
@@ -9,7 +8,7 @@ import useOrder from "./hooks/useOrder"
 
 function App() {
 
-  const { order,tip, setTip, addItem, removeItem, placeOrder, showDetails, showCar, messageCar, increaseMount ,decrementMount } = useOrder()
+  const { order,tip, setTip, addItem, removeItem, placeOrder, showDetails, showCar, messageCar, increaseMount ,decrementMount, descuento, setDescuento } = useOrder()
 
   return (
     <>
@@ -41,11 +40,12 @@ function App() {
               setTip = {setTip}
               tip= {tip}
             />
-            <Discount />
             <OrderTotals 
               order = {order}
               tip = {tip}
               placeOrder = {placeOrder}
+              descuento = {descuento}
+              setDescuento = {setDescuento}
             />
           </>
         ) : (

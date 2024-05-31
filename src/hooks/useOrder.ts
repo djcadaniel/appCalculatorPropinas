@@ -11,6 +11,7 @@ export default function useOrder() {
   const [tip, setTip] = useState(0);
   const [showCar, setShowCar] = useState(false);
   const [messageCar, setMessageCar] = useState(false);
+  const [descuento, setDescuento] = useState<number | null>(0);
 
   const MAX_ITEMS = 5;
   const MIN_ITEMS = 1;
@@ -97,5 +98,7 @@ export default function useOrder() {
     messageCar,
     increaseMount,
     decrementMount,
+    descuento,
+    setDescuento,
   };
 }
