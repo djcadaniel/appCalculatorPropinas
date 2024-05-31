@@ -1,12 +1,15 @@
 import { formatCurrency } from "../helpers"
 import { MenuItem, OrderItem } from "../types"
+import { MdDeleteForever } from "react-icons/md";
 
 type OrderContensProps = {
   order: OrderItem[],
-  removeItem: (id: MenuItem['id']) => void
+  removeItem: (id: MenuItem['id']) => void,
+  increaseMount: (id: MenuItem['id'])=> void,
+  decrementMount: (id: MenuItem['id'])=> void,
 }
 
-export default function OrderContens({order, removeItem}: OrderContensProps) {
+export default function OrderContens({order, removeItem, increaseMount, decrementMount}: OrderContensProps) {
   return (
     <div>
       <h2 className='font-black text-[#FFA500] text-4xl'>Consumo</h2>
@@ -25,12 +28,26 @@ export default function OrderContens({order, removeItem}: OrderContensProps) {
                   Cantidad: {item.quantity} - { formatCurrency(item.price * item.quantity) }
                 </p>
               </div>
-              <button 
-                className="bg-red-600 h-8 w-8 rounded-full text-white font-black"
-                onClick={()=>removeItem(item.id)}
-              >
-                X
-              </button>
+              <div className="flex gap-5">
+                <button 
+                  className="bg-[#81a737] h-8 w-8 rounded-full text-white font-black text-2xl"
+                  onClick={()=>increaseMount(item.id)}
+                >
+                  +
+                </button>
+                <button 
+                  className=" bg-[#81a737] h-8 w-8 rounded-full text-white font-black text-2xl"
+                  onClick={()=>decrementMount(item.id)}
+                >
+                  -
+                </button>
+                <button 
+                  className="bg-[#e8460153] h-8 w-8 rounded-full text-white font-black flex justify-center items-center"
+                  onClick={()=>removeItem(item.id)}
+                >
+                  <MdDeleteForever />
+                </button>
+              </div>
             </div>
           )
           )

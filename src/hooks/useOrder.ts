@@ -58,6 +58,32 @@ export default function useOrder() {
     console.log(showCar);
   };
 
+  const increaseMount = (id: MenuItem["id"]) => {
+    const element = order.map((product) => {
+      if (product.id === id && product.quantity < MAX_ITEMS) {
+        return {
+          ...product,
+          quantity: product.quantity + 1,
+        };
+      }
+      return product;
+    });
+    setOrder(element);
+  };
+
+  const decrementMount = (id: MenuItem["id"]) => {
+    const element = order.map((product) => {
+      if (product.id === id && product.quantity > MIN_ITEMS) {
+        return {
+          ...product,
+          quantity: product.quantity - 1,
+        };
+      }
+      return product;
+    });
+    setOrder(element);
+  };
+
   return {
     order,
     tip,
@@ -69,5 +95,7 @@ export default function useOrder() {
     showCar,
     setShowCar,
     messageCar,
+    increaseMount,
+    decrementMount,
   };
 }

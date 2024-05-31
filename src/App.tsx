@@ -1,3 +1,4 @@
+import Discount from "./components/Discount"
 import Header from "./components/Header"
 import MenuItem from "./components/MenuItem"
 import OrderContens from "./components/OrderContens"
@@ -8,7 +9,7 @@ import useOrder from "./hooks/useOrder"
 
 function App() {
 
-  const { order,tip, setTip, addItem, removeItem, placeOrder, showDetails, showCar, messageCar } = useOrder()
+  const { order,tip, setTip, addItem, removeItem, placeOrder, showDetails, showCar, messageCar, increaseMount ,decrementMount } = useOrder()
 
   return (
     <>
@@ -22,22 +23,25 @@ function App() {
         </div>
         {/* <img src={fondo} alt="" className="absolute h-full w-full object-cover bg-gradient-to-r from-yellow-950 via-yellow-900 to-yellow-600 relativemix-blend-hue" /> */}
       </div>
-      <div className={`${messageCar ? 'absolute bg-green-500 top-10 right-1/2 left-1/2': ''} w-[200px] text-center p-3 rounded-lg`}>
+      <div className={`${messageCar ? 'fixed bg-amber-950 text-white border border-yellow-600 top-10 right-0 sm:right-1/2 left-[35%] sm:left-1/2': 'hidden'} w-[200px] text-center p-3 rounded-lg z-50`}>
         <p>Producto añadido😀</p>
       </div>
       <div 
-        className={`${ showCar ? 'showCar' : '  '} z-50 fixed top-0 -left-full h-full w-[90%] lg:w-[50%] transition-all duration-500 ease-in-out p-5 space-y-10 bg-[#875B36]`}
+        className={`opacity-90 ${ showCar ? 'showCar' : '  '} z-50 fixed top-0 -left-full h-full w-[90%] lg:w-[50%] transition-all duration-500 ease-in-out p-5 space-y-10 bg-[#875B36]`}
       >
         {order.length > 0 ? (
           <>
             <OrderContens 
               order = {order}
               removeItem = {removeItem}
+              increaseMount = {increaseMount}
+              decrementMount = {decrementMount}
             />
             <TipPercentajeForm 
               setTip = {setTip}
               tip= {tip}
             />
+            <Discount />
             <OrderTotals 
               order = {order}
               tip = {tip}
@@ -45,7 +49,7 @@ function App() {
             />
           </>
         ) : (
-          <p className="text-center">La orden esta vacía</p>
+          <p className="text-center w-full bg-black/20 text-white py-6">Carrito vacío 😝</p>
         )}
       </div>
       <main className="mx-auto w-full bg-[#48392D] font-montserrat">
