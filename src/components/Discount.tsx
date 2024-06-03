@@ -59,7 +59,7 @@ export default function Discount({descuento, setDescuento, order, tip}: Discount
         <div className='flex flex-wrap gap-3 text-white'>
           <div className='w-full flex gap-3'>
             <input 
-              className='rounded-md text-black outline-none p-2'
+              className='rounded-md text-black outline-none px-0 sm:p-2'
               id='discount'
               type="text"
               name='discount'
