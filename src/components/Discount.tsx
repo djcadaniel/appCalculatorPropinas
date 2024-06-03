@@ -6,17 +6,17 @@ const typeDiscount = [
   {
     id:'d-1',
     percent: 0.1,
-    label: 'premio1'
+    label: 'PREMIO1'
   },
   {
     id:'d-2',
     percent: 0.2,
-    label: 'premio2'
+    label: 'PREMIO2'
   },
   {
     id:'d-3',
     percent: 0.3,
-    label: 'premio3'
+    label: 'PREMIO3'
   },
 ]
 
@@ -37,7 +37,9 @@ export default function Discount({descuento, setDescuento, order, tip}: Discount
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value)
+    let value = e.target.value;
+    value = value.toUpperCase().replace(/\s/g, '');
+    setInputValue(value);
   }
   
   const canjear = (label: string)=>{
@@ -49,7 +51,7 @@ export default function Discount({descuento, setDescuento, order, tip}: Discount
   const subTotal = order.reduce( (total, item) => total + (item.quantity * item.price), 0 )
   const discountAmount = subTotal * (tip ?? 0);
   const total = subTotal + discountAmount;
-  const dctoVale = total * (descuento ?? 0)
+  const dctoVale= parseFloat((total * (descuento ?? 0)).toFixed(2));
   const totalDcto = total - dctoVale
   
   return (

@@ -8,16 +8,18 @@ import useOrder from "./hooks/useOrder"
 
 function App() {
 
-  const { order,tip, setTip, addItem, removeItem, placeOrder, showDetails, showCar, messageCar, increaseMount ,decrementMount, descuento, setDescuento } = useOrder()
+  const { order,tip, setTip, addItem, removeItem, placeOrder, showDetails, showCar, messageCar, increaseMount ,decrementMount, descuento, setDescuento, showDetailsScreen } = useOrder()
 
   return (
-    <>
+    <div >
       <div className="h-[100vh] w-full bg-cover bg-center bg-no-repeat bg-fixed bg-[url('/img/madera.jpg')]">
         <div className="bg-gradient-to-r from-black/80 via-black/50 to-yellow-800/60">
           <Header 
             showDetails = {showDetails}
             addItem={addItem}
             order = {order}
+            showCar = {showCar}
+            showDetailsScreen={showDetailsScreen}
           />
         </div>
         {/* <img src={fondo} alt="" className="absolute h-full w-full object-cover bg-gradient-to-r from-yellow-950 via-yellow-900 to-yellow-600 relativemix-blend-hue" /> */}
@@ -26,7 +28,7 @@ function App() {
         <p>Producto añadido😀</p>
       </div>
       <div 
-        className={`opacity-90 ${ showCar ? 'showCar' : '  '} z-50 fixed top-0 -left-full h-full w-[90%] lg:w-[50%] transition-all duration-500 ease-in-out p-5 space-y-10 bg-[#875B36]`}
+        className={`opacity-90 ${ showCar ? 'showCar' : ''} z-50 fixed top-0 -left-full h-full w-[90%] lg:w-[50%] transition-all duration-500 ease-in-out p-5 space-y-10 bg-[#875B36]`}
       >
         {order.length > 0 ? (
           <>
@@ -52,7 +54,7 @@ function App() {
           <p className="text-center w-full bg-black/20 text-white py-6">Carrito vacío 😝</p>
         )}
       </div>
-      <main className="mx-auto w-full bg-[#48392D] font-montserrat">
+      <main className={`${showCar ? 'blur-sm backdrop-blur-sm' : ''} mx-auto w-full bg-[#48392D] font-montserrat`} onClick={showDetailsScreen}>
         <section className="w-full h-auto contain p-10">
           <h2 className="text-4xl font-black text-white">Menú</h2>
           <div className="w-full h-full mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-11 px-5 sm:px-10 md:px-20 py-5">
@@ -66,7 +68,7 @@ function App() {
           </div>
         </section>
       </main>
-    </>
+    </div>
   )
 }
 

@@ -56,7 +56,10 @@ export default function useOrder() {
 
   const showDetails = () => {
     setShowCar(!showCar);
-    console.log(showCar);
+  };
+  const showDetailsScreen = () => {
+    setShowCar(false);
+    console.log("click screen");
   };
 
   const increaseMount = (id: MenuItem["id"]) => {
@@ -100,5 +103,6 @@ export default function useOrder() {
     decrementMount,
     descuento,
     setDescuento,
+    showDetailsScreen,
   };
 }
