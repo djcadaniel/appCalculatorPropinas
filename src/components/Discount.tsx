@@ -53,28 +53,32 @@ export default function Discount({descuento, setDescuento, order, tip}: Discount
   const totalDcto = total - dctoVale
   
   return (
-    <div className='flex justify-start items-center gap-4'>
-      <h3 className="font-black text-[#FFA500] text-2xl">Vale:</h3>
+    <div className=''>
+      <h3 className="font-black text-[#FFA500] text-2xl mb-3">Vale:</h3>
       <form action="" onSubmit={handleSubmit}>
-        <div className='flex gap-3 text-white'>
-          <input 
-            className='rounded-md text-black outline-none px-2'
-            id='discount'
-            type="text"
-            name='discount'
-            value={inputValue}
-            onChange={handleInputChange}
-          />
-          <button 
-            className='bg-amber-300 hover:bg-amber-950 px-6 py-2 rounded-md  text-yellow-950 hover:text-white'
-            onClick={()=>canjear(inputValue)}
-          >
-            Canjear
-          </button>
-          <div className='bg-amber-300 text-yellow-950 p-2'>
-            <p>Pocentaje del vale: {(descuento ?? 0) * 100}%</p>
-            <p>Descuento del vale: {dctoVale}</p>
-            <p>Total: {formatCurrency(totalDcto)}</p>
+        <div className='flex flex-wrap gap-3 text-white'>
+          <div className='w-full flex gap-3'>
+            <input 
+              className='rounded-md text-black outline-none p-2'
+              id='discount'
+              type="text"
+              name='discount'
+              value={inputValue}
+              onChange={handleInputChange}
+            />
+            <button 
+              className='bg-amber-300 hover:bg-amber-950 px-6 py-2 rounded-md  text-yellow-950 hover:text-white'
+              onClick={()=>canjear(inputValue)}
+            >
+              Canjear
+            </button>
+          </div>
+          <div className='w-full flex'>
+            <div className=''>
+              <p>Pocentaje del vale: {(descuento ?? 0) * 100}%</p>
+              <p>Descuento del vale: {dctoVale}</p>
+              <p>Total: {formatCurrency(totalDcto)}</p>
+            </div>
           </div>
         </div>
       </form>
