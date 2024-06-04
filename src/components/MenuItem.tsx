@@ -15,6 +15,7 @@ export default function MenuItem({item, addItem} : MenuItemProps) {
       <div className="flex flex-row w-full h-auto">
         <div className="w-1/2 h-auto">
           <p className="text-md">{item.name}</p>
+          <p className={`${ item.activatePro ? '' : 'line-through'} text-sm`}>{`Promotion: ${(item.promotion) * 100}%`}</p>
           <p className="font-bold text-xl">${item.price}</p>
         </div>
         <div className="w-1/2 h-auto flex items-end justify-end">

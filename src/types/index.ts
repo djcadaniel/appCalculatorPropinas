@@ -3,6 +3,8 @@ export type MenuItem = {
   name: string;
   price: number;
   foto: string;
+  promotion: number;
+  activatePro: boolean;
 };
 
 export type OrderItem = MenuItem & {
